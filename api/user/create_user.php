@@ -1,29 +1,28 @@
 <?php
 include_once('../config.php');
 
-$id = addslashes(htmlentities($_POST['id']));
-$nama_user = addslashes(htmlentities($_POST['nama_user']));
+$current_date_time = new DateTime();
+$id_user = addslashes(htmlentities($_POST['id_user']));
+$full_name = addslashes(htmlentities($_POST['full_name']));
 $username = addslashes(htmlentities($_POST['username']));
 $password = addslashes(htmlentities($_POST['password']));
-$id_role = addslashes(htmlentities($_POST['id_role']));
-$alamat_user = addslashes(htmlentities($_POST['alamat_user']));
-$tanggal_lahir_user = addslashes(htmlentities($_POST['tanggal_lahir_user']));
-$dibuat_tanggal_user = addslashes(htmlentities($_POST['dibuat_tanggal_user']));
-$terupdate_tanggal_user = addslashes(htmlentities($_POST['terupdate_tanggal_user']));
+$role = addslashes(htmlentities($_POST['role']));
+$address = addslashes(htmlentities($_POST['address']));
+// $date_created = addslashes(htmlentities($_POST['date_created']));
+// $date_updated = addslashes(htmlentities($_POST['date_updated']));
+$date_created = $current_date_time->format('Y-m-d H:i:s');
+$date_updated = $current_date_time->format('Y-m-d H:i:s');
 
-$insertnorm = "INSERT INTO userr(id,nama_user,username,password,id_role,alamat_user,tanggal_lahir_user,dibuat_tanggal_user,terupdate_tanggal_user) 
-               VALUES(NULL, '$nama_user','$username','$password','$id_role','$alamat_user','$tanggal_lahir_user','$dibuat_tanggal_user','$terupdate_tanggal_user')";
-$exeinsertnorm = mysqli_query($koneksi,$insertnorm);
+$insertnorm = "INSERT INTO user(id_user,full_name,username,password,role,address,date_created,date_updated) 
+               VALUES(NULL, '$full_name','$username','$password','$role','$address','$date_created','$date_updated')";
+$exeinsertnorm = mysqli_query($koneksi, $insertnorm);
 $response = array();
-if($exeinsertnorm)
-{
-  $response['code'] =1;
+if ($exeinsertnorm) {
+  $response['code'] = 1;
   $response['message'] = "Success! Data Inserted";
-}else{
-  $response['code'] =0;
-  $response['message'] = "Failed! Data Not Inserted";
+} else {
+  $response['code'] = 0;
+  $response['message'] = mysqli_error($koneksi);
 }
 
 echo json_encode($response);
-
-?>
