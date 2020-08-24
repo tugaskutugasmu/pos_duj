@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Aug 24, 2020 at 07:36 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Host: 127.0.0.1
+-- Generation Time: Aug 24, 2020 at 08:09 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `test_db_tugasmu`
+-- Database: `db_duj`
 --
 
 -- --------------------------------------------------------
@@ -39,6 +39,26 @@ CREATE TABLE `absent` (
 
 INSERT INTO `absent` (`id_absent`, `id_user`, `date_login`) VALUES
 (1, 1, '2020-08-24 23:19:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `anggaran`
+--
+
+CREATE TABLE `anggaran` (
+  `id_anggaran` int(11) NOT NULL,
+  `nama_anggaran` varchar(30) NOT NULL,
+  `total_anggaran` int(10) NOT NULL,
+  `tgl_anggaran` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `anggaran`
+--
+
+INSERT INTO `anggaran` (`id_anggaran`, `nama_anggaran`, `total_anggaran`, `tgl_anggaran`) VALUES
+(1, 'laptop', 15000000, '2020-08-25');
 
 -- --------------------------------------------------------
 
@@ -121,6 +141,27 @@ CREATE TABLE `product_update` (
 
 INSERT INTO `product_update` (`id_product_update`, `id_product`, `price`, `date_created`) VALUES
 (1, 'b4jns3', 10000, '2020-08-24 23:23:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `realisasi`
+--
+
+CREATE TABLE `realisasi` (
+  `id_realisasi` int(11) NOT NULL,
+  `id_anggaran` int(11) NOT NULL,
+  `jml_realisasi` int(10) NOT NULL,
+  `tgl_realisasi` date NOT NULL,
+  `nama_realisasi` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `realisasi`
+--
+
+INSERT INTO `realisasi` (`id_realisasi`, `id_anggaran`, `jml_realisasi`, `tgl_realisasi`, `nama_realisasi`) VALUES
+(1, 1, 6000000, '2020-08-26', 'laptop lenovo');
 
 -- --------------------------------------------------------
 
@@ -240,6 +281,12 @@ ALTER TABLE `absent`
   ADD KEY `id_user` (`id_user`);
 
 --
+-- Indexes for table `anggaran`
+--
+ALTER TABLE `anggaran`
+  ADD PRIMARY KEY (`id_anggaran`);
+
+--
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -266,6 +313,13 @@ ALTER TABLE `product_update`
   ADD PRIMARY KEY (`id_product_update`),
   ADD KEY `id_product` (`id_product`),
   ADD KEY `id_product_2` (`id_product`);
+
+--
+-- Indexes for table `realisasi`
+--
+ALTER TABLE `realisasi`
+  ADD PRIMARY KEY (`id_realisasi`),
+  ADD KEY `id_anggaran` (`id_anggaran`);
 
 --
 -- Indexes for table `role`
@@ -315,6 +369,12 @@ ALTER TABLE `absent`
   MODIFY `id_absent` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `anggaran`
+--
+ALTER TABLE `anggaran`
+  MODIFY `id_anggaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
@@ -331,6 +391,12 @@ ALTER TABLE `product_stock`
 --
 ALTER TABLE `product_update`
   MODIFY `id_product_update` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `realisasi`
+--
+ALTER TABLE `realisasi`
+  MODIFY `id_realisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `transaction`
@@ -377,6 +443,12 @@ ALTER TABLE `product_stock`
 --
 ALTER TABLE `product_update`
   ADD CONSTRAINT `product_update_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `realisasi`
+--
+ALTER TABLE `realisasi`
+  ADD CONSTRAINT `realisasi_ibfk_1` FOREIGN KEY (`id_anggaran`) REFERENCES `anggaran` (`id_anggaran`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `transaction`
