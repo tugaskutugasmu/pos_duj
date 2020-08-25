@@ -18,14 +18,12 @@ $date_updated = current_date_time();
 $insertnorm = "INSERT INTO user(id_user,full_name,username,password,role,address,date_created,date_updated) 
                VALUES(NULLIF('$id_user',''), '$full_name','$username','$password','$role','$address','$date_created','$date_updated')";
 $exeinsertnorm = mysqli_query($koneksi, $insertnorm);
-$response = array();
+$response = null;
 if ($exeinsertnorm) {
-  // $response['code'] = 1;
-  // $response['message'] = "Success! Data Inserted";
+  // $response = success_message("User inserted :  . $full_name");
   header("Location: ../../user/user_view.php");
 } else {
-  $response['code'] = 0;
-  $response['message'] = mysqli_error($koneksi);
+  $response = error_message();
 }
 
 echo json_encode($response);

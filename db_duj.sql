@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 24, 2020 at 08:09 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.5
+-- Host: localhost
+-- Generation Time: Aug 25, 2020 at 02:53 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,40 @@ CREATE TABLE `absent` (
 --
 
 INSERT INTO `absent` (`id_absent`, `id_user`, `date_login`) VALUES
-(1, 1, '2020-08-24 23:19:21');
+(1, 1, '2020-08-24 23:19:21'),
+(2, 1, '2020-08-25 11:48:14'),
+(3, 1, '2020-08-25 11:49:03'),
+(4, 1, '2020-08-25 11:49:13'),
+(5, 1, '2020-08-25 11:49:15'),
+(6, 1, '2020-08-25 11:50:05'),
+(7, 1, '2020-08-25 11:50:25'),
+(8, 1, '2020-08-25 11:50:55'),
+(9, 1, '2020-08-25 11:51:16'),
+(10, 1, '2020-08-25 11:51:18'),
+(11, 1, '2020-08-25 11:51:46'),
+(12, 1, '2020-08-25 11:51:51'),
+(13, 1, '2020-08-25 11:52:04'),
+(14, 1, '2020-08-25 11:52:16'),
+(15, 1, '2020-08-25 12:04:15'),
+(16, 1, '2020-08-25 12:04:46'),
+(17, 1, '2020-08-25 12:36:45'),
+(18, 1, '2020-08-25 13:01:35'),
+(19, 1, '2020-08-25 13:02:10'),
+(20, 1, '2020-08-25 15:00:58'),
+(21, 1, '2020-08-25 15:01:31'),
+(22, 1, '2020-08-25 19:21:11'),
+(23, 1, '2020-08-25 19:21:15'),
+(24, 1, '2020-08-25 19:22:04'),
+(25, 1, '2020-08-25 19:22:13'),
+(26, 1, '2020-08-25 19:24:25'),
+(27, 1, '2020-08-25 19:24:49'),
+(28, 1, '2020-08-25 19:24:55'),
+(29, 1, '2020-08-25 19:25:00'),
+(30, 1, '2020-08-25 19:25:06'),
+(31, 1, '2020-08-25 19:26:13'),
+(32, 1, '2020-08-25 19:41:42'),
+(33, 1, '2020-08-25 19:43:43'),
+(34, 1, '2020-08-25 19:44:14');
 
 -- --------------------------------------------------------
 
@@ -92,55 +125,19 @@ INSERT INTO `customer` (`id_customer`, `nik`, `full_name`, `job`, `phone_number`
 CREATE TABLE `product` (
   `id_product` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `date_created` datetime NOT NULL
+  `price` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `date_created` datetime NOT NULL,
+  `date_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id_product`, `name`, `date_created`) VALUES
-('b4jns3', 'lifeboy anti corona', '2020-08-24 23:21:16');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `product_stock`
---
-
-CREATE TABLE `product_stock` (
-  `id_stock` int(11) NOT NULL,
-  `id_product_update` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `date_created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `product_stock`
---
-
-INSERT INTO `product_stock` (`id_stock`, `id_product_update`, `quantity`, `date_created`) VALUES
-(1, 1, 600, '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `product_update`
---
-
-CREATE TABLE `product_update` (
-  `id_product_update` int(11) NOT NULL,
-  `id_product` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL,
-  `date_created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `product_update`
---
-
-INSERT INTO `product_update` (`id_product_update`, `id_product`, `price`, `date_created`) VALUES
-(1, 'b4jns3', 10000, '2020-08-24 23:23:55');
+INSERT INTO `product` (`id_product`, `name`, `price`, `quantity`, `date_created`, `date_updated`) VALUES
+('B213Kslv222', 'asus dddvvv', 1000, 400, '2020-08-25 19:18:41', '2020-08-25 19:18:41'),
+('B213s', 'xiaomay', 4000000, 4, '2020-08-25 19:23:34', '2020-08-25 19:23:34');
 
 -- --------------------------------------------------------
 
@@ -178,7 +175,12 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`role`) VALUES
+('assitent_director'),
 ('kasir'),
+('kasir1'),
+('kasir12'),
+('kasir123'),
+('kasir1234'),
 ('manager');
 
 -- --------------------------------------------------------
@@ -266,8 +268,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `role`, `username`, `password`, `full_name`, `address`, `date_created`, `date_updated`) VALUES
-(1, 'manager', 'bossGilang', 'bossGilang', 'bossGilang', 'rumah mewah', '2020-08-24 23:18:19', '2020-08-24 23:18:19'),
-(2, 'kasir', 'jakaKasir', 'jakaKasir', 'jakaKasir', 'jalan kelapa', '2020-08-24 00:30:45', '2020-08-24 00:30:45');
+(1, 'manager', 'bossGilang', 'bossGilang', 'bossGilang', 'rumah mewah', '2020-08-24 23:18:19', '2020-08-24 23:18:19');
 
 --
 -- Indexes for dumped tables
@@ -298,21 +299,6 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id_product`);
-
---
--- Indexes for table `product_stock`
---
-ALTER TABLE `product_stock`
-  ADD PRIMARY KEY (`id_stock`),
-  ADD KEY `id_product_update` (`id_product_update`);
-
---
--- Indexes for table `product_update`
---
-ALTER TABLE `product_update`
-  ADD PRIMARY KEY (`id_product_update`),
-  ADD KEY `id_product` (`id_product`),
-  ADD KEY `id_product_2` (`id_product`);
 
 --
 -- Indexes for table `realisasi`
@@ -366,7 +352,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `absent`
 --
 ALTER TABLE `absent`
-  MODIFY `id_absent` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_absent` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `anggaran`
@@ -379,18 +365,6 @@ ALTER TABLE `anggaran`
 --
 ALTER TABLE `customer`
   MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `product_stock`
---
-ALTER TABLE `product_stock`
-  MODIFY `id_stock` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `product_update`
---
-ALTER TABLE `product_update`
-  MODIFY `id_product_update` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `realisasi`
@@ -420,7 +394,7 @@ ALTER TABLE `transaction_products`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -433,48 +407,16 @@ ALTER TABLE `absent`
   ADD CONSTRAINT `absent_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `product_stock`
---
-ALTER TABLE `product_stock`
-  ADD CONSTRAINT `product_stock_ibfk_1` FOREIGN KEY (`id_product_update`) REFERENCES `product_update` (`id_product_update`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `product_update`
---
-ALTER TABLE `product_update`
-  ADD CONSTRAINT `product_update_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Constraints for table `realisasi`
 --
 ALTER TABLE `realisasi`
   ADD CONSTRAINT `realisasi_ibfk_1` FOREIGN KEY (`id_anggaran`) REFERENCES `anggaran` (`id_anggaran`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id_customer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `transaction_details`
---
-ALTER TABLE `transaction_details`
-  ADD CONSTRAINT `transaction_details_ibfk_1` FOREIGN KEY (`id_transaction`) REFERENCES `transaction` (`id_transaction`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `transaction_products`
---
-ALTER TABLE `transaction_products`
-  ADD CONSTRAINT `transaction_products_ibfk_1` FOREIGN KEY (`id_transaction`) REFERENCES `transaction` (`id_transaction`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `transaction_products_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role`) REFERENCES `role` (`role`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role`) REFERENCES `role` (`role`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
