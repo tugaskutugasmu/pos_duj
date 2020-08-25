@@ -20,7 +20,7 @@ $insertnorm = "INSERT INTO user(id_user,full_name,username,password,role,address
 $exeinsertnorm = mysqli_query($koneksi, $insertnorm);
 $response = null;
 if ($exeinsertnorm) {
-  $response = success_message("User inserted :  . $full_name");
+  // $response = success_message("User inserted :  . $full_name");
   header("Location: ../../user/user_view.php");
 } else {
   $response = error_message();

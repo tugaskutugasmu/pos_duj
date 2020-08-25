@@ -13,7 +13,7 @@ $query = "UPDATE user SET full_name = '$full_name', address = '$address', date_u
 $update = mysqli_query($koneksi, $query);
 $response = null;
 if ($update) {
-  $response = success_message('data uptodated');
+  // $response = success_message('data uptodated');
   header("Location: ../../user/user_view.php");
 } else {
   $response = error_message('data uptodated');

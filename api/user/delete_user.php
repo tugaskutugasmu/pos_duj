@@ -9,7 +9,7 @@ if ($rows > 0) {
   $delete = mysqli_query($koneksi, $query);
   $response = null;
   if ($delete) {
-    $response = success_message("Deleted : . $id_user");
+    // $response = success_message("Deleted : . $id_user");
     header("Location: ../../user/user_view.php");
   } else {
     $response = error_message();
