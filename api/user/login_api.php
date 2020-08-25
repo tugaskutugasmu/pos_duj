@@ -27,7 +27,7 @@ $role = addslashes(htmlentities($_POST['role']));
 
 $query = "SELECT * FROM user WHERE role ='$role'AND username = '$username' AND password = '$password'";
 $login = mysqli_query($koneksi, $query);
-$response = array();
+$response = null;
 $result = $login->fetch_assoc();
 
 if ($login) {
@@ -35,17 +35,17 @@ if ($login) {
     if ($role == 'kasir') {
         // redirect to to kasir home
         doAbsent();
-        $response['message'] = 'to kasir home';
+        $response = success_message('to kasir home');
     } elseif ($role == 'manager') {
         // redirect to manager home
         doAbsent();
-        $response['message'] = 'to manager home';
+        $response = success_message('to manager home');
     } else {
         // user not found ?? 
-        $response['message'] = 'user not found';
+        $response = error_message('user ' . $username . ' not found');
     }
 } else {
-    $response['message'] = 'error';
+    $response = error_message();
 }
 
 
