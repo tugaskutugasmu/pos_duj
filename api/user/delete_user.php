@@ -10,6 +10,7 @@ if ($rows > 0) {
   $response = null;
   if ($delete) {
     $response = success_message("Deleted : . $id_user");
+    header("Location: ../../user/user_view.php");
   } else {
     $response = error_message();
   }

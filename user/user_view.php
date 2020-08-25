@@ -32,21 +32,21 @@ $data = json_decode($data, TRUE); ?>
 </head>
 
 <body id="page-top">
-    <div id="wrapper">
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="customer.php">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Karyawan<sup></sup></div>
-            </a>
-            <hr class="sidebar-divider my-0">
-            <li class="nav-item">
-                <a class="nav-link" href="customer_add.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tambah Karyawan</span></a>
-            </li>
-        </ul>
+  <div id="wrapper">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="user_view.php">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Karyawan<sup></sup></div>
+      </a>
+      <hr class="sidebar-divider my-0">
+      <li class="nav-item">
+        <a class="nav-link" href="user_add.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Tambah Karyawan</span></a>
+      </li>
+    </ul>  
         <div class="container-fluid">
 
             <h1 class="h3 mb-2 text-gray-800"> </h1>
@@ -55,51 +55,49 @@ $data = json_decode($data, TRUE); ?>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
 
-                    <h6 class="m-0 font-weight-bold text-primary">Daftar Karyawan</h6>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Username</th>
-                                    <th>Password</th>
-                                    <th>Nama</th>
-                                    <th>Alamat</th>
-                                    <th>Edit | Hapus</th>
-                                </tr>
-                            </thead>
-                            <?php foreach ($data as $data) { ?>
-                                <tbody>
-                                    <tr class="table-primary">
-                                        <td>
-                                            <?= $data["id_user"] ?>
-                                        </td>
-                                        <td>
-                                            <?= $data["username"] ?>
-                                        </td>
-                                        <td>
-                                            <?= $data["password"] ?>
-                                        </td>
-                                        <td>
-                                            <?= $data["full_name"] ?>
-                                        </td>
-                                        <td>
-                                            <?= $data["address"] ?>
-                                        </td>
-                                        <td colspan="2"> <a href="user_update.php">Edit</a>
-                                            <!-- <a href="../api/user/delete_user.php?id_user=<?= $data['id_user']; ?>">Hapus</a> -->
+                <h6 class="m-0 font-weight-bold text-primary">Daftar Karyawan</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>Edit | Hapus</th>
+                    </tr>
+                    </thead>
+                    <?php foreach ($data as $data) { ?>
+                    <tbody>
+                        <tr class="table-primary">
+                            <td>
+                                <?= $data["id_user"] ?>
+                            </td>
+                            <td>
+                                <?= $data["username"] ?>
+                            </td>
+                            <td>
+                                <?= $data["password"] ?>
+                            </td>
+                            <td>
+                                <?= $data["full_name"] ?>
+                            </td>
+                            <td>
+                                <?= $data["address"] ?>
+                            </td>
+                            <td colspan="2"><a   href="user_update.php">Edit</a> |
                                             <form action="../api/user/delete_user.php" method="post">
                                                 <input type="hidden" name="id_user" value="<?= $data['id_user'] ?>">
                                                 <input type="submit" value="Hapus">
-                                            </form>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            <?php } ?>
-                        </table>
-                    </div>
+                                            </form> 
+                            </td>
+                        </tr>
+                    </tbody>
+                    <?php } ?>
+                </table>
                 </div>
             </div>
         </div>
