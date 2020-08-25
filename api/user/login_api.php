@@ -6,7 +6,7 @@ $password = addslashes(htmlentities($_POST['password']));
 $role = addslashes(htmlentities($_POST['role']));
 
 
-$query = "SELECT * FROM user WHERE role ='" . $role . "'AND username = '" . $username . "' AND password = '" . $password . "'";
+$query = "SELECT * FROM user WHERE role ='$role'AND username = '$username' AND password = '$password'";
 $login = mysqli_query($koneksi, $query);
 $response = array();
 $result = $login->fetch_assoc();
