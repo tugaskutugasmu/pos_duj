@@ -20,8 +20,9 @@ $insertnorm = "INSERT INTO user(id_user,full_name,username,password,role,address
 $exeinsertnorm = mysqli_query($koneksi, $insertnorm);
 $response = array();
 if ($exeinsertnorm) {
-  $response['code'] = 1;
-  $response['message'] = "Success! Data Inserted";
+  // $response['code'] = 1;
+  // $response['message'] = "Success! Data Inserted";
+  header("Location: ../../user/user_view.php");
 } else {
   $response['code'] = 0;
   $response['message'] = mysqli_error($koneksi);

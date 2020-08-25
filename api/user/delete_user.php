@@ -10,8 +10,9 @@ if ($rows > 0) {
   $delete = mysqli_query($koneksi, $query);
   $response = array();
   if ($delete) {
-    $response['code'] = 1;
-    $response['message'] = "Deleted Success";
+    // $response['code'] = 1;
+    // $response['message'] = "Deleted Success";
+    header("Location: ../../user/user_view.php");
   } else {
     $response['code'] = 0;
     $response['message'] = mysqli_error($koneksi);

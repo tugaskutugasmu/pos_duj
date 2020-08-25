@@ -32,7 +32,7 @@ $data = json_decode($data, TRUE); ?>
 <body id="page-top">
   <div id="wrapper">
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="customer.php">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="user_view.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -40,7 +40,7 @@ $data = json_decode($data, TRUE); ?>
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item">
-        <a class="nav-link" href="customer_add.php">
+        <a class="nav-link" href="user_add.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Tambah Karyawan</span></a>
       </li>
@@ -86,8 +86,11 @@ $data = json_decode($data, TRUE); ?>
                             <td>
                                 <?= $data["address"] ?>
                             </td>
-                            <td colspan="2"> <a href="user_update.php">Edit</a> |
-                                            <a href="../api/user/delete_user.php?id_user=<?=$data['id_user']; ?>">Hapus</a> 
+                            <td colspan="2"><a   href="user_update.php">Edit</a> |
+                                            <form action="../api/user/delete_user.php" method="post">
+                                                <input type="hidden" name="id_user" value="<?= $data['id_user'] ?>">
+                                                <input type="submit" value="Hapus">
+                                            </form> 
                             </td>
                         </tr>
                     </tbody>
