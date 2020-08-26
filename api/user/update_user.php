@@ -14,7 +14,7 @@ $update = mysqli_query($koneksi, $query);
 $response = null;
 if ($update) {
   // $response = success_message('data uptodated');
-  header("Location: ../../user/user_view.php");
+  header("Location: ../../view/user/user_view.php");
 } else {
   $response = error_message('data uptodated');
 }

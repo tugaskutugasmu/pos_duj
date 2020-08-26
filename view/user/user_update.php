@@ -15,11 +15,11 @@ $data = json_decode($data, TRUE);
 <html>
     <head>
 	    <title>Edit Karyawan</title>
-	    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
     </head>
     <body>
         <div>
-        <form action="../api/user/update_user.php" method="post" id="form">
+        <form action="../../api/user/update_user.php" method="post" id="form">
 		<div class="container">
 			
 			<div class="row">

@@ -21,7 +21,7 @@ $exeinsertnorm = mysqli_query($koneksi, $insertnorm);
 $response = null;
 if ($exeinsertnorm) {
   // $response = success_message("User inserted :  . $full_name");
-  header("Location: ../../user/user_view.php");
+  header("Location: ../../view/user/user_view.php");
 } else {
   $response = error_message();
 }
